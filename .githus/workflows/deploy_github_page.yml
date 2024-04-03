@@ -1,0 +1,77 @@
+name: Deploy GitHub page
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Remixが紹介していたSPAモードでのGitHub Pagesデプロイ方法
+# REF: https://github.com/brookslybrand/remix-gh-pages/blob/main/.github/workflows/build-deploy.yml
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# actionsの同時実行を制御するための設定
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          # pnpmが用意してるactionに記載されているcache方法では、このcacheを指定していないのでそれに合わせる
+          # REF: https://github.com/pnpm/action-setup?tab=readme-ov-file#use-cache-to-reduce-installation-time
+          # cache: 'pnpm'
+
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Setup Pages
+        # REF: https://docs.github.com/ja/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages#configuring-the-configure-pages-action
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'build/client'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

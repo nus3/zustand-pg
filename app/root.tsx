@@ -1,3 +1,4 @@
+import { MetaFunction } from "@remix-run/node";
 import {
   Links,
   Meta,
@@ -5,6 +6,16 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Zustand Playground" },
+    {
+      name: "description",
+      content: "A playground to experiment with and learn Zustand",
+    },
+  ];
+};
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,7 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <main style={{ padding: "0 20px" }}>{children}</main>
         <ScrollRestoration />
         <Scripts />
       </body>

@@ -7,6 +7,10 @@ type FieldFactoryProps = {
 };
 
 const Component: FC<FieldFactoryProps> = ({ fieldName }) => {
+  // Selector作って、Storeの中の特定のstateやactionをコンポーネントの中で使うことで対象のstateが更新された時以外の再レンダリングを抑えられる
+  // We recommend using selectors when using either the properties or actions from the store
+  // REF: https://docs.pmnd.rs/zustand/guides/auto-generating-selectors
+
   // HACK: 型定義サボってるとこ
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error

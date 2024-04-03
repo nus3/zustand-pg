@@ -12,6 +12,9 @@ export type FieldSlice = {
 
 // If you have some middlewares then replace StateCreator<MyState, [], [], MySlice> with StateCreator<MyState, Mutators, [], MySlice>
 // REF: https://docs.pmnd.rs/zustand/guides/typescript#slices-pattern
+
+// immer — ["zustand/immer", never]
+// REF: https://github.com/pmndrs/zustand/blob/main/docs/guides/typescript.md#middlewares-and-their-mutators-reference
 export const createFieldSlice: StateCreator<
   SliceState,
   [["zustand/immer", never]],

@@ -18,6 +18,9 @@ type State = {
   setNestFieldValue: (value: string, fieldName: string) => void;
 };
 
+// なぜCurry化しているのか？
+// This is because it enables you to infer the store type.
+// REF: https://github.com/pmndrs/zustand/blob/main/docs/guides/typescript.md#create-without-curried-workaround
 export const useStore = create<State>()(
   immer((set) => ({
     field1: "",

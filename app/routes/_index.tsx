@@ -8,6 +8,9 @@ export default function IndexPage() {
         <li>
           <Link to="/normal-form">Normal Form</Link>
         </li>
+        <li>
+          <Link to="/zustand-form">Zunstand Form</Link>
+        </li>
       </ul>
     </div>
   );

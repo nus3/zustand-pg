@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 
 # Remixが紹介していたSPAモードでのGitHub Pagesデプロイ方法
+# REF: https://twitter.com/remix_run/status/1768640090010468568
 # REF: https://github.com/brookslybrand/remix-gh-pages/blob/main/.github/workflows/build-deploy.yml
 permissions:
   contents: read

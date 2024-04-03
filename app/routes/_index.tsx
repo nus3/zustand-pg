@@ -17,6 +17,9 @@ export default function IndexPage() {
         <li>
           <Link to="/zustand-sliced-form">Zunstand Sliced Form</Link>
         </li>
+        <li>
+          <Link to="/zustand-selector-form">Zunstand Selector Form</Link>
+        </li>
       </ul>
     </div>
   );

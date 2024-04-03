@@ -1,0 +1,14 @@
+.button {
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+

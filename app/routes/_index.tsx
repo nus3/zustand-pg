@@ -14,6 +14,9 @@ export default function IndexPage() {
         <li>
           <Link to="/zustand-separated-form">Zunstand Separated Form</Link>
         </li>
+        <li>
+          <Link to="/zustand-sliced-form">Zunstand Sliced Form</Link>
+        </li>
       </ul>
     </div>
   );

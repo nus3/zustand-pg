@@ -34,8 +34,6 @@ export const ZunstandSeparatedForm: FC = () => {
     console.log(store);
   }, [store]);
 
-  // const handleSubmit = useCallback(() => {}, []);
-
   return (
     <form className={styles.form}>
       <button className={styles.button} type="button" onClick={handleSubmit}>

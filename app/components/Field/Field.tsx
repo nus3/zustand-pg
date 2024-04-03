@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import styles from "./Field.module.css";
 
 type FieldProps = {
@@ -8,7 +8,7 @@ type FieldProps = {
   value: string;
 };
 
-export const Field: FC<FieldProps> = ({ label, name, onChange, value }) => {
+const Component: FC<FieldProps> = ({ label, name, onChange, value }) => {
   return (
     <div className={styles.field}>
       <label htmlFor={name}>{label}</label>
@@ -22,3 +22,5 @@ export const Field: FC<FieldProps> = ({ label, name, onChange, value }) => {
     </div>
   );
 };
+
+export const Field = memo(Component);

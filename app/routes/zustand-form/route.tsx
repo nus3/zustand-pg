@@ -4,7 +4,7 @@ import { ZunstandForm } from "~/routes/zustand-form/components/ZustandForm/Zusta
 export default function NormalFormPage() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Normal Form</h1>
+      <h1>Zustand Form</h1>
       <ZunstandForm></ZunstandForm>
       <Footer></Footer>
     </div>

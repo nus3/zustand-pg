@@ -1,7 +1,7 @@
 import { FC, useCallback, useMemo } from "react";
 import styles from "./ZustandForm.module.css";
 import { Field } from "~/components/Field/Field";
-import { useStore } from "~/routes/zustand-form/components/ZustandForm/useStore";
+import { useStore } from "~/routes/zustand-form/useStore";
 
 // HACK: useStore側でinitialValuesは定義
 const initialValues = {

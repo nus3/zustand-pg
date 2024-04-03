@@ -11,6 +11,9 @@ export default function IndexPage() {
         <li>
           <Link to="/zustand-form">Zunstand Form</Link>
         </li>
+        <li>
+          <Link to="/zustand-separated-form">Zunstand Separated Form</Link>
+        </li>
       </ul>
     </div>
   );

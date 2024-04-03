@@ -1,7 +1,6 @@
 import { FC } from "react";
 import styles from "./Field.module.css";
 
-// Controlledなinputに必要なpropsをいかに定義します
 type FieldProps = {
   label: string;
   name: string;

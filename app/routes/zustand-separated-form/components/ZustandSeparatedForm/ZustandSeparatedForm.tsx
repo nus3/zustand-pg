@@ -37,7 +37,7 @@ export const ZunstandSeparatedForm: FC = () => {
   return (
     <form className={styles.form}>
       <button className={styles.button} type="button" onClick={handleSubmit}>
-        保存
+        Submit
       </button>
       <div className={styles.fields}>
         {fieldNames.map((fieldName) => {
